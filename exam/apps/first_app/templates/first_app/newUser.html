@@ -30,19 +30,78 @@
   </style>
 </head>
 <body>
+    <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Active</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#">Disabled</a>
+          </li>
+        </ul>
+      </nav>
+      
   <div class="jumbotron jumbotron-billboard">
       <div class="img"></div>
         <div class="container">
             <div class="row">
               <div class="col-lg-12">
-              <h4 class="text-primary">Hi, {{main.first_name}}!</h4>
+              <h3 class="text-primary">Hi, {{main.first_name}}!</h3>
               <p>
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nisi, blanditiis. Corrupti nemo, maxime quas beatae asperiores blanditiis sit molestias iusto veniam accusamus culpa, nobis ducimus fuga, porro cumque sapiente nesciunt.
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nisi, blanditiis. Corrupti nemo, maxime quas beatae asperiores blanditiis sit molestias iusto veniam accusamus culpa, nobis ducimus fuga, porro cumque sapiente nesciunt.
               </p>
           </div>
         </div>
       </div>
-    </div>
-  
+  </div>
+
+  <div class="container">
+      <div class="container">
+          <table class="table table-striped table-bordered table-hover table-condensed">
+            <h3 class="text-primary">Your Wishlist</h3>
+            <tr class="table-primary">
+              <th>Item</th>
+              <th>Added By</th>
+              <th>Date Added</th>
+              <th>Action</th>
+            </tr>
+              {% for u in useritems %}
+            <tr>
+              <td><a href="{% url 'wish_items' id=u.id%}">{{ u.name }}</a></td>
+              <td>{{ u.added_by }}</td>
+              <td>{{ u.created_at }}</td>
+              <td><a href="{% url 'delete_items' id=u.id%}">Remove from my Wishlist</a></td>
+            </tr>
+              {% endfor %}
+            </table>
+          <hr>
+
+          <table class="table table-striped table-bordered table-hover table-condensed">
+            <h3 class="text-primary">Other Member's Items</h3>
+            <tr class="table-primary">
+              <th>Item</th>
+              <th>Added By</th>
+              <th>Date Added</th>
+              <th>Action</th>
+            </tr>
+              {% for o in otheritems %}
+            <tr>
+              <td><a href="{% url 'wish_items' id=o.id%}">{{ o.name }}</a></td>
+              <td>{{ o.added_by }}</td>
+              <td>{{ o.created_at }}</td>
+              <td><a href="{% url 'join' id=o.id%}">Add to my Wishlist</a></td>
+            </tr>
+              {% endfor %}
+          </table>
+          <div class="float-left"><h3><a href="/add">Add Item!</a></h3></div>
+          <div class="float-right"><h3><a href="/logout">Logout</a></h3></div>
+        </div>
+  </div>
 </body>
 </html>
