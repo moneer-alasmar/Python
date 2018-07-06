@@ -11,7 +11,7 @@ from django.db.models import Q
 def index(request):
 	if 'user_id' in request.session:
             return redirect('/user')
-	return render(request, 'first_app/test_login.html')
+	return render(request, 'first_app/login.html')
 
 def user(request):
     if not 'user_id' in request.session:
@@ -24,7 +24,7 @@ def user(request):
         'main': user,
         'otheritems': otheritems,
     }
-    return render(request, 'first_app/newUser.html', context)
+    return render(request, 'first_app/user.html', context)
 
 def register(request):
     errors = []
@@ -107,15 +107,17 @@ def additem(request):
 		return redirect('/user')
 
 def wishitems(request, id):
-	if not 'user_id' in request.session:
-            return redirect('/')
-	item = Items.objects.get(id=id)
-	otherseekers = item.item_seekers.all()
-	context = {
+  if not 'user_id' in request.session:
+    return redirect('/')
+  user = User.objects.get(id=request.session['user_id'])
+  item = Items.objects.get(id=id)
+  otherseekers = item.item_seekers.all()
+  context = {
+        'user': user,
 		'item': item,
     	'otherseekers': otherseekers
     }
-	return render(request, 'first_app/details.html', context)
+  return render(request, 'first_app/show.html', context)
 
 def join(request, id):
     item = Items.objects.get(id=id)
