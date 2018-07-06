@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{item.name}}</title>
+	<style>
+		body, html {
+ 		   height: 100%;
+		}
+		h1{
+			color: white;
+			text-decoration: underline;
+			display: inline-block;
+			text-align: center;
+			margin-left: 210px;
+		}
+		#main{
+			background-color: #8d8d8d;
+			height: 75%;
+			width: 40%;
+		}
+		.logo{
+			float: right;
+		}
+		.home{
+			float: left;
+		}
+		h3{
+			color: #2c2f34W;
+		}
+		h2{
+			color: #2c2f34W;
+		}
+		h4{
+			color: #2c2f34W;
+		}
+	</style>
+</head>
+<body>
+	<div id="main">
+		<h1>{{item.name}}</h1>
+		<h2>Added by {{ item.added_by }}</h2>
+		<h3>Other users who added this product/item under their wish list:</h3>
+		{%for o in otherseekers %}
+		<h4>{{ o.username }}</h4>
+		{% endfor %}
+
+		<a class="home" href="/user">Home</a> <a class="logo" href="/logout">Logout</a>
+	</div>
+
+</body>
+</html>
