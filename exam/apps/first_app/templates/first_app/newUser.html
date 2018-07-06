@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{{main.first_name}}'s homepage!</title>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Importing Bootstrap -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'first_app/style.css' %}" type="text/css">
+
+  <style>
+    .jumbotron-billboard .img {
+    margin-bottom: 0px;
+    opacity: 0.2;
+    color: #fff;
+    background: #000 url({% static "first_app/personal-smart-tech.png" %}) top center no-repeat;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    overflow: hidden;
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:1;
+  }
+  </style>
+</head>
+<body>
+  <div class="jumbotron jumbotron-billboard">
+      <div class="img"></div>
+        <div class="container">
+            <div class="row">
+              <div class="col-lg-12">
+              <h4 class="text-primary">Hi, {{main.first_name}}!</h4>
+              <p>
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nisi, blanditiis. Corrupti nemo, maxime quas beatae asperiores blanditiis sit molestias iusto veniam accusamus culpa, nobis ducimus fuga, porro cumque sapiente nesciunt.
+              </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+</body>
+</html>

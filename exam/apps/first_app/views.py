@@ -24,7 +24,7 @@ def user(request):
         'main': user,
         'otheritems': otheritems,
     }
-    return render(request, 'first_app/user.html', context)
+    return render(request, 'first_app/newUser.html', context)
 
 def register(request):
     errors = []
