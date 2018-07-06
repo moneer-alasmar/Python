@@ -8,7 +8,9 @@ padding-bottom:50px;
 position:relative;
 z-index:2;
 }
-
+nav{
+  margin: 0;
+}
 @media screen and (max-width: 768px) {
 .jumbotron {
   padding-top:20px;
